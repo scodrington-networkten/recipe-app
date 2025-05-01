@@ -85,6 +85,10 @@ button, input[type="button"], input[type="submit"], input[type="reset"]{
   &:hover, &:focus{
     background-color: variables.$form-button-bg-color-active;
   }
+
+  &.loading{
+    opacity: 0.5;
+  }
 }
 
 .ingredients-section{

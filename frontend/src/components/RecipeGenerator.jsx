@@ -8,44 +8,56 @@ const RecipeGenerator = ({ingredients}) => {
     const [recipes, setRecipes] = useState(null);
     const [totalRecipeCount, setTotalRecipeCount] = useState(0);
     const [nextRecipesLink, setNextRecipesLink] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
-    function getRecipes(e) {
+    async function getRecipes(e) {
         e.preventDefault();
-        fetchRecipes(ingredients);
+        try {
+            await fetchRecipes(ingredients);
+        } catch (error) {
+
+        }
+
     }
 
-
-    //called from the button to load more, will use the nextrecipe link to load the next set of data
-    function getMoreRecipes(e) {
-        e.preventDefault();
-        fetchRecipes(ingredients, nextRecipesLink)
-    }
 
     //fetch recipes from the API
     async function fetchRecipes(ingredients, nextLink = null) {
 
         let searchTerms = ingredients.join(" ");
         let encodedSearchTerm = encodeURIComponent(searchTerms);
+        setLoading(true);  // Set a loading state
 
-        //get data from backend API
-        const request = await fetch(`/api/recipes?query=${encodedSearchTerm}`);
-        const data = await request.json()
+        try {
+            //get data from backend API
+            const response = await fetch(`/api/recipes?query=${encodedSearchTerm}`);
 
-        //collect the total number of recipes
-        setTotalRecipeCount(data.count);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
 
-        //search thoough all returned data to extract the recipes
-        let recipes = []
-        if (data.hits.length > 0) {
-            data.hits.map(item => {
-                let recipe = item.recipe;
-                let links = item._links;
-                recipes.push(recipe);
-            })
+            const data = await response.json();
+
+            //collect the total number of recipes
+            setTotalRecipeCount(data.count);
+
+            // Search through all returned data to extract the recipes
+            let recipes = [];
+            if (data.hits && data.hits.length > 0) {
+                recipes = data.hits.map(item => item.recipe);
+            }
+
+            //set recipe data for display
+            setRecipes(recipes);
+
+        } catch (error) {
+            console.error("Failed to fetch recipes:", error);
+            setError("Failed to load recipes. Please try again later."); // Set an error message
+        } finally {
+            setLoading(false); // Set loading state to false after fetching
         }
 
-        //set the recipes
-        setRecipes(recipes);
     }
 
     ///Called when we have a recipe to show!
@@ -110,7 +122,8 @@ const RecipeGenerator = ({ingredients}) => {
                             </div>
                             {ingredients.length >= minIngredientsRequired &&
                                 <div className="secondary">
-                                    <button onClick={getRecipes}>Get a Recipe!</button>
+                                    <button  onClick={getRecipes} className={`recipe-button ${loading ? 'loading' : ''}`}>Get a Recipe!
+                                    </button>
                                 </div>
                             }
                         </form>
@@ -121,8 +134,10 @@ const RecipeGenerator = ({ingredients}) => {
                             <p>We've been able to find <strong>{totalRecipeCount}</strong> recipes that match your
                                 ingredients above. Listed below are <strong>{recipes.length}</strong> of them</p>
                             {getRecipeSection()}
-                            <button onClick={getMoreRecipes}>Get more recipes!</button>
                         </section>
+                    }
+                    {error.length > 0 &&
+                        <p>There was an error fetching data!</p>
                     }
                 </article>
 
