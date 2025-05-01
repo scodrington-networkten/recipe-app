@@ -1,0 +1,8 @@
+@use './variables';
+
+.footer-section{
+  background: variables.$theme-footer-bg-color;
+  color: variables.$theme-footer-text-color;
+  padding: 2rem 0rem;
+  flex-grow: 0;
+}

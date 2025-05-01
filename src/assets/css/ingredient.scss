@@ -1,0 +1,45 @@
+//styling for the individual ingredient
+@use './variables';
+
+.ingredient-item{
+
+  display: flex;
+  margin: 0rem 0rem 1rem 0rem;
+  padding: 0.5rem;
+  transition: all ease-out 200ms;
+
+  p{
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+  }
+
+  .remove-item{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+
+    img{
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
+      background-color: variables.$theme-color-primary;
+      transition: all ease-out 200ms;
+
+      &:hover{
+        background-color: variables.$theme-color-primary-dark;
+      }
+    }
+
+
+  }
+
+  &:hover{
+    background-color: #F0EFEB;
+
+  }
+  &:last-of-type{
+    margin: 0rem;
+  }
+}

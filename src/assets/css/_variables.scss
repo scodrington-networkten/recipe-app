@@ -1,0 +1,26 @@
+@use 'sass:color';
+
+$form-element-border-radius: 6px;
+$form-element-padding: 0.5rem 0.75rem;
+$form-border-color: #cfd3d9;
+$form-button-bg-color: #141413;
+$form-button-bg-color-active: color.scale($form-button-bg-color, $lightness: 10%);
+
+$form-button-text-color: #f8f8f6;
+$form-input-text-color: #6a717f;
+
+//themeing
+$theme-color-primary: #cf7456;
+$theme-color-primary-dark: #a95a40;
+
+
+$theme-error-color: #df6c45;
+
+
+$theme-footer-bg-color: #333;
+$theme-footer-text-color: #eee;
+
+
+//single recipe styling
+$recipe-background-color: #cfd3d9;
+$recipe-text-color: #444;

@@ -1,0 +1,24 @@
+@use './variables';
+
+.ingredient-picker{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-grow: 1;
+  justify-content: center;
+  flex-direction: column;
+
+  .primary{
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .error-message{
+    background-color: variables.$theme-error-color;
+    padding: 0.25rem 0.5rem;
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: white;
+    margin: 0;
+  }
+}

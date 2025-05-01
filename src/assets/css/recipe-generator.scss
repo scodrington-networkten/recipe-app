@@ -1,0 +1,41 @@
+@use './variables';
+
+
+.recipe-generator {
+  padding: 1em;
+  background-color: #F0EFEB;
+  border-radius: variables.$form-element-border-radius;
+  display: flex;
+
+  form {
+    display: flex;
+    align-items: center;
+    row-gap: 1em;
+    column-gap: 1em;
+    flex-grow: 1;
+  }
+
+  .title {
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0;
+    margin: 0.5em 0em;
+  }
+
+  .subtitle {
+    color: #6B7280;
+    padding: 0;
+    margin: 0.5em 0em;
+  }
+
+  .primary {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .secondary {
+    display: flex;
+    flex-grow: 0;
+  }
+}
