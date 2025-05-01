@@ -15,6 +15,14 @@ const RecipeGenerator = ({ingredients}) => {
 
     }
 
+    function testButton(e){
+        e.preventDefault();
+
+        fetch('/api/data')
+            .then((response) => response.json())
+            .then((data) => console.log(data));
+    }
+
     //called from the button to load more, will use the nextrecipe link to load the next set of data
     function getMoreRecipes(e){
         e.preventDefault();
@@ -140,6 +148,7 @@ const RecipeGenerator = ({ingredients}) => {
                             {ingredients.length >= minIngredientsRequired &&
                                 <div className="secondary">
                                     <button onClick={getRecipes}>Get a Recipe!</button>
+                                    <button onClick={testButton}>Test</button>
                                 </div>
                             }
                         </form>
