@@ -5,6 +5,9 @@ import Header from '@components/header';
 import Footer from "@components/footer.jsx";
 import Main from "@components/Main.jsx";
 import {UserProvider} from "@components/UserContext.jsx";
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {faCamera, faUser, faCake} from "@fortawesome/free-solid-svg-icons";
+library.add(faCamera, faUser, faCake);
 
 function App() {
     //const [count, setCount] = useState(0)

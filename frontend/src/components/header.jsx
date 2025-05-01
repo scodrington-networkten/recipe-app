@@ -2,6 +2,7 @@ import logo from '@image-assets/chef-claude-icon.png';
 import {useContext} from "react";
 import {UserContext} from "@components/UserContext.jsx";
 import '@css/header.scss';
+import {FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = () => {
 
@@ -20,7 +21,8 @@ const Header = () => {
                             <span className="name">{user.name}</span>
                             <span className="email">{user.email}</span>
                         </div>
-                        <img className="icon" src={logo} alt="user profile"/>
+                        <FontAwesomeIcon className="icon" icon={['fas', 'user']} />
+
                     </div>
                 </div>
             </header>

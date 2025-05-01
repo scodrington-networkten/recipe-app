@@ -70,17 +70,16 @@ input[type="text"] {
 
 button, input[type="button"], input[type="submit"], input[type="reset"]{
   border-radius: variables.$form-element-border-radius;;
-  padding: variables.$form-element-padding;
   border: solid 1px variables.$form-border-color;
   background: variables.$form-button-bg-color;
   color: variables.$form-button-text-color;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: variables.$form-element-padding;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
   white-space: nowrap;
   transition: all ease-out 200ms;
+  pointer-events: auto;
 
   &:hover, &:focus{
     background-color: variables.$form-button-bg-color-active;
@@ -88,6 +87,7 @@ button, input[type="button"], input[type="submit"], input[type="reset"]{
 
   &.loading{
     opacity: 0.5;
+    pointer-events: none;
   }
 }
 
