@@ -14,7 +14,7 @@ const Header = () => {
                 <div className="inner">
                     <div className="logo-section">
                         <img src={logo} alt="Fancy Recipes"/>
-                        <h1>Chef Claude</h1>
+                        <h1>Fancy Recipes</h1>
                     </div>
                     <div className="user-section">
                         <div className="user-details">
@@ -22,7 +22,6 @@ const Header = () => {
                             <span className="email">{user.email}</span>
                         </div>
                         <FontAwesomeIcon className="icon" icon={['fas', 'user']} />
-
                     </div>
                 </div>
             </header>

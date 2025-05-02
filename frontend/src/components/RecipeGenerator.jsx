@@ -1,6 +1,7 @@
 import '@css/recipe-generator.scss';
 import {useState} from "react";
 import Recipe from "@components/recipe/Recipe.jsx";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const RecipeGenerator = ({ingredients}) => {
 
@@ -126,8 +127,11 @@ const RecipeGenerator = ({ingredients}) => {
                             </div>
                             {ingredients.length >= minIngredientsRequired &&
                                 <div className="secondary">
-                                    <button onClick={getRecipes}
-                                            className={`recipe-button ${loading ? 'loading' : ''}`}>Get a Recipe!
+                                    <button
+                                        onClick={getRecipes}
+                                        className={`recipe-button ${loading ? 'loading' : ''}`}
+                                    >
+                                        <FontAwesomeIcon className="icon" icon={['fas', 'book']} />Get a Recipe!
                                     </button>
                                 </div>
                             }

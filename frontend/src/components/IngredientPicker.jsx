@@ -1,6 +1,7 @@
 import '@css/ingredient-picker.scss';
 import {useContext, useState} from "react";
 import {UserContext} from "@components/UserContext.jsx";
+import {FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const IngredientPicker = ({onAddItem, ingredients}) => {
 
