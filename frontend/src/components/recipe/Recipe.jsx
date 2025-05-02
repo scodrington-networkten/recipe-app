@@ -1,4 +1,6 @@
 import '@css/recipe.scss';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useState} from "react";
 
 const Recipe = ({data}) => {
 
@@ -21,6 +23,8 @@ const Recipe = ({data}) => {
 
     const getIngredients = () => {
 
+        if(instructionsHidden) return;
+
         let content = ingredients.map((item, index) => {
             const keyname = `recipe-ingredient-${index}`;
             return <li key={keyname}>{item.text}</li>
@@ -29,16 +33,35 @@ const Recipe = ({data}) => {
         return <ul>{content}</ul>;
     }
 
+    const toggleRecipeInstructions = () => {
+        setInstructionsHidden(prevState => {
+            return !prevState;
+        })
+    }
+
+    const [instructionsHidden, setInstructionsHidden] = useState(true);
+
     return (
         <article className="recipe">
             <section className="info-section">
                 <h2>{label}</h2>
-                <p>Cuisine Type: {cuisineType.join(", ")}</p>
-                <p>Dish Type: {dishType.join(", ")}</p>
-                <p>Class: {co2EmissionsClass}</p>
-                <section className="recipe-ingredient-list">
-                    <h3>Ingredient List</h3>
+                <div className="recipe-summary">
+                    <span><FontAwesomeIcon className="icon" icon={['fas', 'earth-americas']} /> {cuisineType.join(", ")}</span>
+                    <span><FontAwesomeIcon className="icon" icon={['fas', 'utensils']} /> {dishType.join(", ")}</span>
+                    <span><FontAwesomeIcon className="icon" icon={['fas', 'star']} /> {co2EmissionsClass}</span>
+                </div>
+
+                <section className="recipe-instructions">
+                    <h3>Instructions
+                        <div className="instructions-toggle">
+                            <button onClick={toggleRecipeInstructions} className="simple">
+                                <FontAwesomeIcon alt="Hide or show the recipe instructions" className="icon" icon={['fas', instructionsHidden ? 'chevron-down' : 'chevron-up']} />
+                            </button>
+
+                        </div>
+                    </h3>
                     {getIngredients()}
+
                 </section>
                 <a href={url} alt="link to recipe">View this recipe externally on <strong>{source}</strong></a>
             </section>

@@ -1,10 +1,10 @@
 @use './variables';
 
-.recipes-section{
+.recipes-section {
   margin: 1rem 0rem;
 }
 
-.recipe{
+.recipe {
   background-color: variables.$recipe-background-color;
   color: variables.$recipe-text-color;
   padding: 1rem;
@@ -16,19 +16,43 @@
   justify-items: center;
   justify-content: space-between;
 
-  .image-section{
+  .image-section {
     flex-grow: 0;
-    img{
+
+    img {
       max-width: 200px;
       border: solid 1px #fff;
     }
   }
 
-  .info-section{
+  .info-section {
     flex-grow: 1;
   }
 
-  &:last-of-type{
+  &:last-of-type {
     margin-bottom: 0rem;
   }
+
+  .recipe-summary {
+    display: flex;
+    gap: 0.5rem;
+
+    span {
+
+    }
+  }
+
+  .recipe-instructions h3 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    button {
+      margin-left: 0.5rem;
+      background-color: #fff;
+      cursor: pointer;
+    }
+  }
+
+
 }

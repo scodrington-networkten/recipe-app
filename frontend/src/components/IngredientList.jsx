@@ -1,6 +1,7 @@
 import Ingredient from "@components/Ingredient.jsx";
 import {useState} from "react";
 import ingredientList from "@components/IngredientList.jsx";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const IngredientList = ({ingredients, onRemoveItem}) => {
 
@@ -16,7 +17,7 @@ const IngredientList = ({ingredients, onRemoveItem}) => {
 
         if(ingredients.length > 0){
             return <>
-                <h2>Here are all our ingredient</h2>
+                <h2>Here are all your ingredients!  <FontAwesomeIcon className="icon" icon={['fas', 'carrot']} /></h2>
                 <ul>
                     {components}
                 </ul>
