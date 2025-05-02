@@ -30,8 +30,12 @@ const RecipeGenerator = ({ingredients}) => {
         setLoading(true);  // Set a loading state
 
         try {
+
+            //determine backend endpoint based off env file
+            const apiUrl = `${import.meta.env.VITE_BACKEND_API_URL}/api/recipes?query=${encodedSearchTerm}`;
             //get data from backend API
-            const response = await fetch(`/api/recipes?query=${encodedSearchTerm}`);
+            const response = await fetch(apiUrl);
+            console.log(apiUrl);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -122,7 +126,8 @@ const RecipeGenerator = ({ingredients}) => {
                             </div>
                             {ingredients.length >= minIngredientsRequired &&
                                 <div className="secondary">
-                                    <button  onClick={getRecipes} className={`recipe-button ${loading ? 'loading' : ''}`}>Get a Recipe!
+                                    <button onClick={getRecipes}
+                                            className={`recipe-button ${loading ? 'loading' : ''}`}>Get a Recipe!
                                     </button>
                                 </div>
                             }
