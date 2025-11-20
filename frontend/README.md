@@ -1,3 +1,18 @@
+
+# Project Info
+
+Small sample app showing a react front-end and a nodejs backend
+
+## Commands
+
+### Backend 
+
+Start in a new terminal `npm start` which will run the express server locally
+
+### Frontend 
+
+Start in a new terminal `npm run dev` which will run the react front-end / vite locally 
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
