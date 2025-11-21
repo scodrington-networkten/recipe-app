@@ -19,16 +19,23 @@ const IngredientsSection = () => {
     //called by Ingredient when user selects the x button to remove the ingredient from the list
     function handleRemoveItem(item) {
         setIngredients(function(prevIngredients) {
-            return prevIngredients.filter(ingredient => ingredient != item);
+            return prevIngredients.filter(ingredient => ingredient !== item);
         });
     }
 
     return (
         <>
             <div className="ingredients-section">
-                <IngredientPicker onAddItem={handleAddItem} ingredients={ingredients}/>
-                <IngredientList onRemoveItem={handleRemoveItem} ingredients={ingredients}/>
+                <div className="primary">
+                    <IngredientList onRemoveItem={handleRemoveItem} ingredients={ingredients}/>
+                </div>
+                <div className="secondary">
+
+                    <IngredientPicker onAddItem={handleAddItem} ingredients={ingredients}/>
+                </div>
+
                 <RecipeGenerator ingredients={ingredients}/>
+
             </div>
         </>
     )

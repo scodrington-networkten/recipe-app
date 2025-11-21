@@ -103,8 +103,19 @@ button.simple{
 
 .ingredients-section{
   display: flex;
-  flex-direction: column;
+  justify-content: space-between; /* space between children */
+  align-content: flex-start;
+  justify-items: flex-start;
+  flex-wrap: wrap;
   row-gap: 1em;
+
+  > .primary{
+    flex: 1;
+  }
+  > .secondary{
+    padding-top: 1rem;
+    flex: 1;
+  }
 }
 .ingredient-list{
   ul{

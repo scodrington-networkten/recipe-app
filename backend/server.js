@@ -8,10 +8,6 @@ const PORT = process.env.PORT || 5542;
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.json({message: "Hello there!!"})
-});
-
 app.get('/api/recipes', async (req, res) => {
 
     const {query} = req.query;
